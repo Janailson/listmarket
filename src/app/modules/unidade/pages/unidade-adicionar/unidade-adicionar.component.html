@@ -1,0 +1,34 @@
+<nav aria-label="migalha">
+    <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item active" aria-current="page">
+            Unidades de Medida
+        </li>
+        <li class="ms-auto">
+            <a routerLink="/unidades-medida" class="btn btn-outline-secondary btn-sm border-0"><fa-icon
+                    [icon]="faTimes"></fa-icon></a>
+        </li>
+    </ol>
+</nav>
+
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="hstack border-bottom">
+            <button type="button" class="btn btn-sm text-black-50 border-0"><fa-icon [icon]="faSave"
+                    class="text-primary"></fa-icon>
+                Salvar</button>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4 g-3">
+    <div class="col-12">
+        <label class="form-label">Nome</label>
+        <input type="text" name="txtNome" class="form-control" maxlength="60" placeholder="Unidade de Medida" />
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input id="chkMultiplicador" type="checkbox" name="chkMultiplicador" class="form-check-input" checked />
+            <label class="form-check-label" for="chkMultiplicador">Multiplicar</label>
+        </div>
+    </div>
+</div>

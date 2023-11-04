@@ -1,0 +1,36 @@
+<nav aria-label="migalha">
+    <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item active" aria-current="page">
+            Unidades de Medida
+        </li>
+    </ol>
+</nav>
+
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="hstack border-bottom">
+            <a routerLink="/unidades-medida/adicionar" class="btn btn-sm text-black-50"><fa-icon [icon]="faPlus"
+                    class="text-primary"></fa-icon>
+                Adicionar</a>
+            <button type="button" class="btn btn-sm text-black-50 border-0" [disabled]="!deleteButton"><fa-icon
+                    [icon]="faTrashAlt" class="text-primary"></fa-icon>
+                Excluir</button>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-action py-3" *ngFor="let unidade of unidades">
+                <div class="d-flex gap-3 w-100">
+                    <input type="checkbox" name="chkExcluir" value="{{unidade.id}}" (change)="onChange(unidade)" />
+                    <div>{{unidade.nome}}</div>
+                    <a [routerLink]="['/unidades-medida/alterar', unidade.id]"
+                        class="opacity-50 text-nowrap ms-auto stretched-link"><fa-icon
+                            [icon]="faAngleRight"></fa-icon></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
