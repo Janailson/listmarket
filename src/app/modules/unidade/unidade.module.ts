@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FormsModule } from '@angular/forms';
 
 import { UnidadeRoutingModule } from './unidade-routing.module';
 import { UnidadesComponent } from './pages/unidades/unidades.component';
@@ -17,7 +18,8 @@ import { UnidadeAlterarComponent } from './pages/unidade-alterar/unidade-alterar
   imports: [
     CommonModule,
     UnidadeRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ]
 })
 

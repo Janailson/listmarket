@@ -24,11 +24,12 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item list-group-item-action py-3" *ngFor="let unidade of unidades">
                 <div class="d-flex gap-3 w-100">
-                    <input type="checkbox" name="chkExcluir" value="{{unidade.id}}" (change)="onChange(unidade)" />
-                    <div>{{unidade.nome}}</div>
-                    <a [routerLink]="['/unidades-medida/alterar', unidade.id]"
-                        class="opacity-50 text-nowrap ms-auto stretched-link"><fa-icon
-                            [icon]="faAngleRight"></fa-icon></a>
+                    <input type="checkbox" name="chkExcluir" value="{{unidade?.id}}" (change)="onChange(unidade)" />
+                    <a [routerLink]="['/unidades-medida/alterar', unidade?.id]"
+                        class="text-black text-decoration-none d-flex w-100">
+                        <div class="me-auto">{{unidade?.nome}}</div>
+                        <fa-icon [icon]="faAngleRight" class="text-black-50"></fa-icon>
+                    </a>
                 </div>
             </li>
         </ul>

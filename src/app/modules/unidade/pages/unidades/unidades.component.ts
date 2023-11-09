@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
 import { faPlus, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+
 import { Unidade } from 'src/app/domain/models/unidade';
+import { UnidadeService } from 'src/app/services/unidade.service';
 
 @Component({
   selector: 'app-unidades',
@@ -16,15 +19,19 @@ export class UnidadesComponent implements OnInit {
 
   deleteButton: boolean = false;
 
-  unidades: any = [];
+  unidades: Unidade[] = [];
   all_selected_values: number[] = [];
 
+  constructor(private _service: UnidadeService) { }
+
   ngOnInit(): void {
-    this.unidades.push({ id: 1, nome: "un" });
-    this.unidades.push({ id: 2, nome: "kg" });
-    this.unidades.push({ id: 3, nome: "l" });
-    this.unidades.push({ id: 4, nome: "pacote" });
-    this.unidades.push({ id: 5, nome: "dz" });
+    this.getUnidades();
+  }
+
+  getUnidades() {
+    this._service.getAll().subscribe((data: Unidade[]) => {
+      this.unidades = data;
+    })
   }
 
   onChange(unidade: any): void {

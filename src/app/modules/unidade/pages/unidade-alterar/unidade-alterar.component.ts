@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faSave } from '@fortawesome/free-solid-svg-icons'
+import { Unidade } from 'src/app/domain/models/unidade';
+import { UnidadeService } from 'src/app/services/unidade.service';
 
 @Component({
   selector: 'app-unidade-alterar',
@@ -11,19 +13,20 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 export class UnidadeAlterarComponent implements OnInit {
   faTimes = faTimes;
+  faSave = faSave;
 
-  private unidades: any = [];
   unidade: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private _service: UnidadeService) { }
 
   ngOnInit(): void {
-    this.unidades.push({ id: 1, nome: "un" });
-    this.unidades.push({ id: 2, nome: "kg" });
-    this.unidades.push({ id: 3, nome: "l" });
-    this.unidades.push({ id: 4, nome: "pacote" });
-    this.unidades.push({ id: 5, nome: "dz" });
+    let id: number = this.route.snapshot.params["id"];
+    this.getUnidade(id);
+  }
 
-    var id = this.route.snapshot.paramMap.get("id");
+  getUnidade(id: number) {
+    this._service.getById(id).subscribe((data: Unidade) => {
+      this.unidade = data;
+    })
   }
 }
